@@ -4,6 +4,8 @@ words = ["sun", "flower", "son", "hello", "hi", "yesterday", "tomorrow", "moon",
 
 ai_coice = random.choice(words)
 
+
+
 rounds = 0
 while rounds != 5:
     rounds +=1
@@ -12,13 +14,13 @@ while rounds != 5:
     if user_guess == ai_coice:
         print("you choose the correct one")
         print(f"the correct word is: {ai_coice}")
+        print("you won the game")
+        break
     else:
-        print("try again")
-        print(f"{5 - rounds} rounds remain")
-        print("-" * 10)
-        
-        
-if user_guess == ai_coice:
-    print("you won the game")
-else:
-    print("you losse the game")
+        if rounds <5:
+            print("try again")
+            print(f"{5 - rounds} rounds remain")
+            print("-" * 10)
+        else:
+            print("you losse the game")
+            print(f"the correct word is: {ai_coice}")
