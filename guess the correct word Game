@@ -1,26 +1,49 @@
 import random
 
-list_of_words = ["sun", "flower", "son", "hello", "hi", "yesterday", "tomorrow", "moon", "ola", "paper"]
+list_of_words = ["sun", "flower", "son", "hello", "hi",
+                 "yesterday", "tomorrow", "moon", "ola", "paper"]
 
-ai_coice = random.choice(words)
+ai_coice = random.choice(list_of_words)
 
 
+def get_input():
 
-rounds = 0
-while rounds != 5:
-    rounds += 1
-    user_guess = input("choose one from the list: ")
-    
-    if user_guess == ai_coice:
-        print("you choose the correct one")
-        print(f"the correct word is: {ai_coice}")
-        print("you won the game")
-        break
-    else:
-        if rounds < 5:
-            print("try again")
-            print(f"{5 - rounds} rounds remain")
-            print("-" * 10)
+    while True:
+
+        user_input = input("Enter your guess: ").lower()
+        if user_input.isalpha():
+            return user_input
+        print("wrong word!!!")
+
+
+def game_intro():
+    print("-" * 10)
+    print("Wellcome to Guess Game")
+    print("All words is:", list_of_words)
+    print("pls start the game by guess a word =>")
+    print("-" * 10)
+
+
+def run_the_game(number_of_rounds):
+    game_intro()
+    print(f"number of guesse is: {number_of_rounds}")
+
+    rounds = 0
+    while rounds != number_of_rounds:
+        rounds += 1
+
+        if get_input() == ai_coice:
+            print("you choose the correct one")
+            print("you won the game")
+            break
         else:
-            print("you losse the game")
-            print(f"the correct word is: {ai_coice}")
+            if rounds < number_of_rounds:
+                print("try again")
+                print(f"{number_of_rounds - rounds} rounds remain")
+                print("-" * 10)
+            else:
+                print("you lose the game")
+                print(f"the correct word is: {ai_coice}")
+
+
+run_the_game(10)
